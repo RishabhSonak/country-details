@@ -16,6 +16,7 @@ import java.util.*;
 @RestController
 @RequestMapping("/countries")
 public class CountriesController {
+
     @Autowired
     private final RestTemplate restTemplate;
     @Autowired
@@ -25,7 +26,10 @@ public class CountriesController {
         this.restTemplate = restTemplate;
         this.objectMapper = objectMapper;
     }
-
+    @GetMapping(value = "/hello")
+    public ResponseEntity<String> hello(){
+        return new ResponseEntity<>("Hi",HttpStatus.OK);
+    }
     @GetMapping(value = "/get_country_details/{country_name}")
     public ResponseEntity<String> getCountryDetailsByName(@PathVariable(name = "country_name") String countryName) throws CDException {
         String uri = "https://restcountries.com/v3.1/name/" + countryName;
@@ -55,6 +59,7 @@ public class CountriesController {
 
         final String uri = "https://restcountries.com/v3.1/all";
         try {
+            assert uri != null;
             String jsonForAllCountries = restTemplate.getForObject(uri, String.class); // getting json data from all countries
             dataList =  objectMapper.readValue(jsonForAllCountries, new TypeReference<>(){}); //converting the json to List of Maps, each map containg 1 json object
 
@@ -120,7 +125,8 @@ public class CountriesController {
         List<Map<String,Object>> populationLessthenList=new ArrayList<>();
         List<Map<String,Object>> finalList=new ArrayList<>();
 
-        String uri="https://restcountries.com/v3.1/all";
+        final String uri="https://restcountries.com/v3.1/all";
+        assert uri != null;
         ResponseEntity<String> jsonForAllCountries= restTemplate.getForEntity(uri, String.class);
 
         List<Map<String, Object>> dataList=objectMapper.readValue(jsonForAllCountries.getBody(),new TypeReference<>(){});

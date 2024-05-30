@@ -1,8 +1,22 @@
+server:
+  port: 6000
 spring:
   application:
       name: country-details
-server:
-  port: 6000
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/cd_users
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+  jpa:
+    properties:
+      hibernate:
+        dialect:  org.hibernate.dialect.MySQLDialect
+    hibernate:
+#      ddl-auto: create
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
 #logging:
 #  level:
 #    root: trace
