@@ -12,7 +12,7 @@
 	<artifactId>country-details</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>country-details</name>
-	<description>Project to get details about various countries like population, area and many more. To get paginated as well as sorted results of data.</description>
+	<description>Country-Details is an application to retrieve instant, accurate information for any country in the world in lightweight JSON format. .</description>
 	<properties>
 		<java.version>21</java.version>
 	</properties>

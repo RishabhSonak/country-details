@@ -26,10 +26,7 @@ public class CountriesController {
         this.restTemplate = restTemplate;
         this.objectMapper = objectMapper;
     }
-    @GetMapping(value = "/hello")
-    public ResponseEntity<String> hello(){
-        return new ResponseEntity<>("Hi",HttpStatus.OK);
-    }
+
     @GetMapping(value = "/get_country_details/{country_name}")
     public ResponseEntity<String> getCountryDetailsByName(@PathVariable(name = "country_name") String countryName) throws CDException {
         String uri = "https://restcountries.com/v3.1/name/" + countryName;
